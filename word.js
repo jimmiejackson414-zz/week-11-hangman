@@ -11,17 +11,18 @@ var Word = function(wrd){
 	//make a property called getLets, set it to a function and inside the function loop over the word property and push letter objects into the lets property.
 	this.getLets = function() {
 		for (var i = 0; i < this.word.length; i++) {
-			lets.push(letters[i]);
+			this.lets.push(Letter(this.word));
 		}
 	}
 	//returns true or false whether we found the current word or not
 	this.didWeFindTheWord = function() {
 		//set the found property to true or false based on whether all the letters have been found or not
-		if () {
-
+		if (this.lets === false) {
+			Word.found = true;
 		} else {
-
+			Word.found = false;
 		}
+		return Word.found;
 		//return the found property
 	};
 
@@ -30,12 +31,13 @@ var Word = function(wrd){
 		var whatToReturn = 0;
 		//loop over the lets property and if the letter object's charac property equals the guessletter then set the appear property of the letter object to be true. Also increment whatToReturn.
 		for (var i = 0; i < this.lets.length; i++) {
-			if (Letter.let ===   ) {
-
+			if (this.charac === guessletter) {
+				this.appear = true;
+				whatToReturn++;
 			} else {
-
+				this.appear = false;
 			}
-			whatToReturn++;
+
 		}
 
 		return whatToReturn;
@@ -43,11 +45,15 @@ var Word = function(wrd){
 
 	this.wordRender = function() {
 		//make a variable named str and set it to empty quotes
-
+		var str = '';
 		//loop over this.lets and call the letterRender property of the letter object that you're looping over, and add it to str
-
+		for (var i = 0; i < this.lets.length; i++) {
+			str = str + this.lets[i].letterRender();
+		}
+		return str;
 		//return str
 	};
 }
 
 //export the Word constructor here at the end
+module.exports = Word;
